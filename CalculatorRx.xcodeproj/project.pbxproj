@@ -12,6 +12,9 @@
 		39CA3AB21F717F4800FEDEFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39CA3AB01F717F4800FEDEFD /* Main.storyboard */; };
 		39CA3AB41F717F4800FEDEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39CA3AB31F717F4800FEDEFD /* Assets.xcassets */; };
 		39CA3AB71F717F4800FEDEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39CA3AB51F717F4800FEDEFD /* LaunchScreen.storyboard */; };
+		39CA3AC21F717FC100FEDEFD /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CA3ABF1F717FC100FEDEFD /* RxBlocking.framework */; };
+		39CA3AC31F717FC100FEDEFD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CA3AC01F717FC100FEDEFD /* RxCocoa.framework */; };
+		39CA3AC41F717FC100FEDEFD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CA3AC11F717FC100FEDEFD /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		39CA3AB31F717F4800FEDEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39CA3AB61F717F4800FEDEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39CA3AB81F717F4800FEDEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39CA3ABF1F717FC100FEDEFD /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		39CA3AC01F717FC100FEDEFD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		39CA3AC11F717FC100FEDEFD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39CA3AC21F717FC100FEDEFD /* RxBlocking.framework in Frameworks */,
+				39CA3AC31F717FC100FEDEFD /* RxCocoa.framework in Frameworks */,
+				39CA3AC41F717FC100FEDEFD /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,7 @@
 			children = (
 				39CA3AAB1F717F4800FEDEFD /* CalculatorRx */,
 				39CA3AAA1F717F4800FEDEFD /* Products */,
+				39CA3ABE1F717FC100FEDEFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +74,16 @@
 			path = CalculatorRx;
 			sourceTree = "<group>";
 		};
+		39CA3ABE1F717FC100FEDEFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39CA3ABF1F717FC100FEDEFD /* RxBlocking.framework */,
+				39CA3AC01F717FC100FEDEFD /* RxCocoa.framework */,
+				39CA3AC11F717FC100FEDEFD /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +94,7 @@
 				39CA3AA51F717F4800FEDEFD /* Sources */,
 				39CA3AA61F717F4800FEDEFD /* Frameworks */,
 				39CA3AA71F717F4800FEDEFD /* Resources */,
+				39CA3AC51F717FC600FEDEFD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,6 +152,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		39CA3AC51F717FC600FEDEFD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39CA3AA51F717F4800FEDEFD /* Sources */ = {
@@ -262,6 +302,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SLHYE76MHB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CalculatorRx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tv.shinoki.CalculatorRx;
@@ -275,6 +319,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SLHYE76MHB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CalculatorRx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tv.shinoki.CalculatorRx;
